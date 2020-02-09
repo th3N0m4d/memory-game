@@ -1,4 +1,8 @@
-export const levels = {
+/**
+ * @description Difficulty level of the board
+ * @type {object}
+ */
+export const difficultyLevel = {
   easy: {
     rows: 3,
     cols: 4,
@@ -15,3 +19,9 @@ export const levels = {
     label: 'Hard'
   }
 }
+
+/**
+ * @description Default value for cards not selected and/or matched
+ * @type {string}
+ */
+export const QUESTION_MARK = '?'
