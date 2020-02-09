@@ -20,6 +20,11 @@ export const doubleArray = array => {
   return [...array, ...array]
 }
 
+/**
+ * @description Array shuffling function based on the Fisher-Yates algorithm
+ * @param {array} Array
+ * @return {array}
+ */
 export const shuffle = array => {
   for (let i = array.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
@@ -28,3 +33,25 @@ export const shuffle = array => {
 
   return array
 }
+
+/** @description Creates an array with random values for the given parameter
+ * @param {number} numberOfCards
+ * @return {array}
+ */
+export const generateCards = R.pipe(
+  R.divide(R.__, 2),
+  generateUniqueIds,
+  doubleArray,
+  shuffle
+)
+
+const MAX_FLIPPED_CARDS = 2
+/** @description Checks whether an object has the minimum keys to lock the board
+ * @param {object} selectedCards
+ * @return {boolean}
+ */
+export const isLocked = R.pipe(
+  R.keys,
+  R.length,
+  R.equals(MAX_FLIPPED_CARDS)
+)
