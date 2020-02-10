@@ -25,3 +25,9 @@ export const difficultyLevel = {
  * @type {string}
  */
 export const QUESTION_MARK = '?'
+
+/**
+ * @description Time in miliseconds before the board hides the cards
+ * @type {number}
+ */
+export const TIME_BEFORE_HIDDING_CARDS = 1500
