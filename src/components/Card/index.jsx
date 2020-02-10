@@ -1,5 +1,7 @@
 import React from 'React'
 import PropTypes from 'prop-types'
+import * as R from 'ramda'
+
 import {
   FlipBox,
   FlipBoxBack,
@@ -8,12 +10,12 @@ import {
   QuestionText,
   Image
 } from './Atoms'
-
-const QUESTION_MARK = '?'
+import { QUESTION_MARK } from '@/consts'
 
 const propTypes = {
   onClick: PropTypes.func,
-  flipped: PropTypes.bool
+  flipped: PropTypes.bool,
+  imageUrl: PropTypes.string
 }
 
 const Card = ({
@@ -21,7 +23,7 @@ const Card = ({
   imageUrl,
   onClick
 }) => (
-  <FlipBox onClick={onClick}>
+  <FlipBox onClick={() => R.not(flipped) && onClick()}>
     <FlipBoxInner flipped={flipped}>
       <FlipBoxFront>
         <QuestionText>

@@ -45,4 +45,16 @@ describe('Card', () => {
 
     expect(expectedImageUrl).toBe(imageUrl)
   })
+
+  it('should not trigger onClick when card is flipped', () => {
+    const onClickSpy = jest.fn()
+    const imageUrl = 'path/to/image.png'
+    const wrapper = shallow(
+      <Card imageUrl={imageUrl} flipped onClick={onClickSpy} />
+    )
+
+    wrapper.simulate('click')
+
+    expect(onClickSpy).not.toHaveBeenCalled()
+  })
 })
