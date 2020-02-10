@@ -13,7 +13,7 @@ const plugins = [
 
 const resolve = {
   alias: {
-    '@': path.join(__dirname, '..', 'src')
+    '@': APP_DIR
   },
   extensions: ['.jsx', '.js']
 }
