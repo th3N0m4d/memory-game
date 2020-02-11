@@ -1,10 +1,14 @@
 import * as R from 'ramda'
 
 import {
-  generateUniqueIds,
   doubleArray,
-  isLocked
+  generateUniqueIds,
+  isLocked,
+  renderImageUrl,
+  formatImageUrl
 } from './utilities'
+
+import { IMAGES_ADDRESS } from '@/consts'
 
 const isArrayRandom = count => R.pipe(
   R.uniq,
@@ -27,10 +31,12 @@ describe('utilities', () => {
     })
 
     it('should double the initial array', () => {
-      const result = generateUniqueIds(6)
-      const doubledArray = doubleArray(result)
+      const EXPECTED_LENGTH = 12
+      const IDS_TO_GENERATE = 6
+      const uniqueIds = generateUniqueIds(IDS_TO_GENERATE)
+      const result = doubleArray(uniqueIds)
 
-      expect(doubledArray).toHaveLength(12)
+      expect(result).toHaveLength(EXPECTED_LENGTH)
     })
   })
 
@@ -47,5 +53,23 @@ describe('utilities', () => {
 
         expect(result).toBe(expectedResult)
       })
+  })
+
+  describe('renderImageUrl', () => {
+    it('should render image url given a card object', () => {
+      const expectedResult = `${IMAGES_ADDRESS}/image001.png`
+      const result = renderImageUrl({ 0: 1 })
+
+      expect(result).toEqual(expectedResult)
+    })
+  })
+
+  describe('formatImageUrl', () => {
+    it('should render the image url given an image id', () => {
+      const expectedResult = `${IMAGES_ADDRESS}/image001.png`
+      const result = formatImageUrl('1')
+
+      expect(result).toEqual(expectedResult)
+    })
   })
 })
