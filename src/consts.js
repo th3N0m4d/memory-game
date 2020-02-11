@@ -31,3 +31,20 @@ export const QUESTION_MARK = '?'
  * @type {number}
  */
 export const TIME_BEFORE_HIDDING_CARDS = 1500
+
+/**
+ * @description Url address of images taken from HelpfulGames
+ * @type {string}
+ */
+export const IMAGES_ADDRESS = 'https://www.helpfulgames.com/nativeGames/memory/bilder'
+
+/**
+ * @description Pads the string with the value specified
+ * @type {string}
+ */
+export const FILL_STRING = '0'
+
+/**
+ * @description Pads the string given the specified length
+ */
+export const MAX_LENGTH = 3
