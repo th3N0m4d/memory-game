@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { GridContainer } from './Atoms'
+import { GridContainer } from '@/components/Board/Atoms'
 
 describe('Board Atoms', () => {
   it('should render', () => {
@@ -30,5 +30,4 @@ describe('Board Atoms', () => {
 
     expect(wrapper).toHaveStyleRule('grid-template-columns', 'repeat(4,1fr)')
   })
-
 })

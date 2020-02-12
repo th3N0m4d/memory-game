@@ -1,7 +1,7 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import Card from '.'
-import { FlipBoxInner, Image } from './Atoms'
+import Card from '@/components/Card'
+import { FlipBoxInner, Image } from '@/components/Card/Atoms'
 
 describe('Card', () => {
   it('should render', () => {

@@ -6,7 +6,7 @@ import {
   isLocked,
   renderImageUrl,
   formatImageUrl
-} from './utilities'
+} from '@/utilities'
 
 import { IMAGES_ADDRESS } from '@/consts'
 
