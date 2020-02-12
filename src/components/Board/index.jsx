@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import shortid from 'shortid'
 import * as R from 'ramda'
 
 import Card from '@/components/Card'
@@ -42,7 +41,7 @@ const Board = ({
 
         return (
           <Card
-            key={shortid.generate()}
+            key={location}
             flipped={selectedCards[location] === id || matchedCards[id]}
             onClick={() => !locked && onCardSelected(card)}
             imageUrl={renderImageUrl(card)}
