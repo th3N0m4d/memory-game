@@ -15,7 +15,7 @@ export const FlipBoxInner = styled.div`
     width: 100%;
     height: 100%;
     text-align: center;
-    transition: transform 0.8s;
+    transition: transform 0.6s;
     transform-style: preserve-3d;
     transform: ${({ flipped }) => flipped ? 'rotateY(180deg)' : 'none'}
 `
