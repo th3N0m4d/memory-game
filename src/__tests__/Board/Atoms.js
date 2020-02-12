@@ -18,7 +18,7 @@ describe('Board Atoms', () => {
       <GridContainer rows={rows} />
     )
 
-    expect(wrapper).toHaveStyleRule('grid-template-rows', 'repeat(3,100px)')
+    expect(wrapper).toHaveStyleRule('grid-template-rows', 'repeat(3,130px)')
   })
 
   it('should update the grid\'s columns dimensions', () => {

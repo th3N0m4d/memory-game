@@ -2,40 +2,40 @@ import React from 'react'
 import {
   Switch,
   Route,
-  Link
+  Link,
+  useLocation
 } from 'react-router-dom'
 
-import logoImg from '../../public/brand-icon.png'
+import logoImg from '@/public/brand-icon.png'
 import BoardPage from '@/components/BoardPage'
 import HomePage from '@/components/HomePage'
+import { difficultyLevel } from '@/consts'
+import routes from '@/routes'
 
-const App = () => (
-  <>
-    <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-      <Link className='navbar-brand' to='/'>
-        <img src={logoImg} width='50' alt='Logo' />
-      </Link>
+const useQuery = () => new URLSearchParams(useLocation().search)
 
-      <button className='navbar-toggler' type='button' data-toggle='collapse' data-target='#navbarNavAltMarkup' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation'>
-        <span className='navbar-toggler-icon' />
-      </button>
-      <div className='collapse navbar-collapse' id='navbarNavAltMarkup'>
-        <div className='navbar-nav'>
-          <Link className='nav-item nav-link active' to='/'>Home <span className='sr-only'>(current)</span></Link>
-        </div>
-      </div>
-    </nav>
-    <br />
-    <Switch>
-      <Route path='/memory-game'>
-        <BoardPage />
-      </Route>
-      <Route path='/'>
-        <HomePage />
-      </Route>
-    </Switch>
+const App = () => {
+  const query = useQuery()
 
-  </>
-)
+  return (
+    <>
+      <nav className='navbar navbar-expand-lg navbar-light bg-light'>
+        <Link className='navbar-brand' to={routes.homePage}>
+          <img src={logoImg} width='50' alt='Logo' />
+        </Link>
+      </nav>
+      <br />
+      <Switch>
+        <Route path={routes.memoryGame}>
+          <BoardPage difficulty={difficultyLevel[query.get('difficulty')]} />
+        </Route>
+        <Route path={routes.homePage}>
+          <HomePage />
+        </Route>
+      </Switch>
+
+    </>
+  )
+}
 
 export default App
