@@ -1,6 +1,8 @@
 # MEMORY-GAME
 
-MEMORY-GAME is a responsive web app inspired by [HelpfulGames](https://www.helpfulgames.com/subjects/brain-training/memory.html). The images used in this project were taken from HelpfulGames.
+MEMORY-GAME is a responsive web app inspired by [HelpfulGames](https://www.helpfulgames.com/subjects/brain-training/memory.html). 
+
+Note: This project uses the same images from HelpfulGames because of its variety and quality. All the images you see are propriety of HelpfulGames.
 
 ## Installation
 
