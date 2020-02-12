@@ -6,10 +6,11 @@ import {
   useLocation
 } from 'react-router-dom'
 
-import logoImg from '../../public/brand-icon.png'
+import logoImg from '@/public/brand-icon.png'
 import BoardPage from '@/components/BoardPage'
 import HomePage from '@/components/HomePage'
 import { difficultyLevel } from '@/consts'
+import routes from '@/routes'
 
 const useQuery = () => new URLSearchParams(useLocation().search)
 
@@ -19,16 +20,16 @@ const App = () => {
   return (
     <>
       <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-        <Link className='navbar-brand' to='/'>
+        <Link className='navbar-brand' to={routes.homePage}>
           <img src={logoImg} width='50' alt='Logo' />
         </Link>
       </nav>
       <br />
       <Switch>
-        <Route path='/memory-game'>
+        <Route path={routes.memoryGame}>
           <BoardPage difficulty={difficultyLevel[query.get('difficulty')]} />
         </Route>
-        <Route path='/'>
+        <Route path={routes.homePage}>
           <HomePage />
         </Route>
       </Switch>
