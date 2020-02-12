@@ -14,7 +14,7 @@ export const generateUniqueIds = size => {
   while (randomIds.length < size) {
     const newId = Math.round(Math.random() * MAX_ALLOWED_ID)
 
-    if (!R.includes(newId, randomIds)) {
+    if (newId && !R.includes(newId, randomIds)) {
       randomIds.push(newId)
     }
   }
