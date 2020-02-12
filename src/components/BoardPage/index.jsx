@@ -101,7 +101,8 @@ class BoardPage extends Component {
     render () {
       const {
         cols,
-        rows
+        rows,
+        label
       } = this.props.difficulty
 
       const {
@@ -121,6 +122,12 @@ class BoardPage extends Component {
                   <li className='breadcrumb-item active' aria-current='page'>Memory game</li>
                 </ol>
               </nav>
+            </div>
+          </div>
+          <div className='row'>
+            <div className='col'>
+              <h1>Difficulty level: {label}</h1>
+              <hr />
             </div>
           </div>
           <div className='row'>

@@ -21,14 +21,14 @@ const HomePage = () => (
       <div className='col'>
         <nav aria-label='breadcrumb'>
           <ol className='breadcrumb'>
-            <li className='breadcrumb-item'><Link to={routes.homePage}>Home</Link></li>
+            <li className='breadcrumb-item active' aria-current='page'><Link to={routes.homePage}>Home</Link></li>
           </ol>
         </nav>
       </div>
     </div>
     <div className='row'>
       <div className='col'>
-        <h1>Difficulty level</h1>
+        <h1>Levels of difficulty</h1>
         <hr />
       </div>
     </div>
