@@ -113,8 +113,12 @@ class BoardPage extends Component {
         <div className='container'>
           <div className='row'>
             <div className='col'>
-              <h1>Test your memory!</h1>
-              <hr />
+              <nav aria-label='breadcrumb'>
+                <ol className='breadcrumb'>
+                  <li className='breadcrumb-item'><a href='#'>Home</a></li>
+                  <li className='breadcrumb-item active' aria-current='page'>Memory game</li>
+                </ol>
+              </nav>
             </div>
           </div>
           <div className='row'>
