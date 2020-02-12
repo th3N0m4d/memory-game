@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import * as R from 'ramda'
 
@@ -8,6 +9,7 @@ import {
   TIME_BEFORE_HIDDING_CARDS
 } from '@/consts'
 import { generateCards, isLocked } from '@/utilities'
+import routes from '@/routes'
 
 class BoardPage extends Component {
     state = {
@@ -115,7 +117,7 @@ class BoardPage extends Component {
             <div className='col'>
               <nav aria-label='breadcrumb'>
                 <ol className='breadcrumb'>
-                  <li className='breadcrumb-item'><a href='#'>Home</a></li>
+                  <li className='breadcrumb-item'><Link to={routes.homePage}>Home</Link></li>
                   <li className='breadcrumb-item active' aria-current='page'>Memory game</li>
                 </ol>
               </nav>
