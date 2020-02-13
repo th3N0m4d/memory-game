@@ -11,7 +11,7 @@ import {
 import { generateCards, isLocked } from '@/utilities'
 import routes from '@/routes'
 
-class BoardPage extends Component {
+class MemoryGamePage extends Component {
     state = {
       cards: [],
       selectedCards: {},
@@ -148,4 +148,4 @@ class BoardPage extends Component {
     }
 }
 
-export default BoardPage
+export default MemoryGamePage

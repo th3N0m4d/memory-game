@@ -4,7 +4,7 @@ import { MemoryRouter as Router } from 'react-router-dom'
 
 import App from '@/components/App'
 import HomePage from '@/components/HomePage'
-import BoardPage from '@/components/BoardPage'
+import MemoryGamePage from '@/components/MemoryGamePage'
 import routes from '@/routes'
 
 describe('App', () => {
@@ -19,9 +19,9 @@ describe('App', () => {
   })
 
   it.each`
-    route                 | componentName      | component
-    ${routes.homePage}    | ${'HomePage'}      | ${HomePage}
-    ${routes.memoryGame}  | ${'BoardPage'}     | ${BoardPage}
+    route                 | componentName           | component
+    ${routes.homePage}    | ${'HomePage'}           | ${HomePage}
+    ${routes.memoryGame}  | ${'MemoryGamePage'}     | ${MemoryGamePage}
   
   `('should render $componentName for route "$route"',
     ({ route, component: Component }) => {

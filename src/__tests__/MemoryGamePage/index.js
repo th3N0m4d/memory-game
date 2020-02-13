@@ -1,14 +1,14 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 
-import BoardPage from '@/components/BoardPage'
+import MemoryGamePage from '@/components/MemoryGamePage'
 import Board from '@/components/Board'
 import { generateCards } from '@/utilities'
 
-describe('BoardPage', () => {
+describe('MemoryGamePage', () => {
   it('should render', () => {
     const wrapper = shallow(
-      <BoardPage />
+      <MemoryGamePage />
     )
 
     expect(wrapper.exists()).toBeTruthy()
@@ -24,7 +24,7 @@ describe('BoardPage', () => {
       rows: 3
     }
     const wrapper = shallow(
-      <BoardPage />
+      <MemoryGamePage />
     )
 
     const boardProps = wrapper.find(Board).props()
@@ -38,7 +38,7 @@ describe('BoardPage', () => {
 
   it('should lock board after selecting two cards', () => {
     const wrapper = shallow(
-      <BoardPage />
+      <MemoryGamePage />
     )
 
     const board = wrapper.find(Board)
@@ -52,7 +52,7 @@ describe('BoardPage', () => {
 
   it('should not lock board when same card is selected more than once', () => {
     const wrapper = shallow(
-      <BoardPage />
+      <MemoryGamePage />
     )
 
     const board = wrapper.find(Board)

@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom'
 
 import logoImg from '@/public/brand-icon.png'
-import BoardPage from '@/components/BoardPage'
+import MemoryGamePage from '@/components/MemoryGamePage'
 import HomePage from '@/components/HomePage'
 import { difficultyLevel } from '@/consts'
 import routes from '@/routes'
@@ -27,7 +27,7 @@ const App = () => {
       <br />
       <Switch>
         <Route path={routes.memoryGame}>
-          <BoardPage difficulty={difficultyLevel[query.get('difficulty')]} />
+          <MemoryGamePage difficulty={difficultyLevel[query.get('difficulty')]} />
         </Route>
         <Route path={routes.homePage}>
           <HomePage />
