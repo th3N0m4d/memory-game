@@ -28,7 +28,7 @@ const HomePage = () => (
     </div>
     <div className='row'>
       <div className='col'>
-        <h1>Levels of difficulty</h1>
+        <h1>Difficulty levels</h1>
         <hr />
       </div>
     </div>
