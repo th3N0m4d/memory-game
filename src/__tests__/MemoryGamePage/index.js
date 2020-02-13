@@ -47,7 +47,9 @@ describe('MemoryGamePage', () => {
     onCardSelectedFn({ id: 0, position: 0 })
     onCardSelectedFn({ id: 1, position: 1 })
 
-    expect(wrapper.state('locked')).toBeTruthy()
+    const isLocked = wrapper.find(Board).prop('locked')
+
+    expect(isLocked).toBeTruthy()
   })
 
   it('should not lock board when same card is selected more than once', () => {
@@ -61,6 +63,8 @@ describe('MemoryGamePage', () => {
     onCardSelectedFn({ 0: 1 })
     onCardSelectedFn({ 0: 1 })
 
-    expect(wrapper.state('locked')).toBeFalsy()
+    const isLocked = wrapper.find(Board).prop('locked')
+
+    expect(isLocked).toBeFalsy()
   })
 })
