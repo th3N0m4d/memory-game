@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import * as R from 'ramda'
 
-import Board from '@/components/Board'
+import MemoryGame from '@/components/MemoryGame'
 import {
   difficultyLevel,
   TIME_BEFORE_HIDDING_CARDS
@@ -11,13 +11,15 @@ import {
 import { generateCards, isLocked } from '@/utilities'
 import routes from '@/routes'
 
+const initialState = {
+  cards: [],
+  selectedCards: {},
+  matchedCards: {},
+  locked: false
+}
+
 class MemoryGamePage extends Component {
-    state = {
-      cards: [],
-      selectedCards: {},
-      matchedCards: {},
-      locked: false
-    }
+    state = initialState
 
     static propTypes = {
       difficulty: PropTypes.shape({
@@ -32,6 +34,10 @@ class MemoryGamePage extends Component {
     }
 
     componentDidMount () {
+      this.initializeGame()
+    }
+
+    initializeGame = () => {
       const {
         rows,
         cols
@@ -40,15 +46,39 @@ class MemoryGamePage extends Component {
       const cards = generateCards(cols * rows)
 
       this.setState({
+        ...initialState,
         cards
       })
     }
 
-    resetBoard = () => {
+    unlockNextMove = () => {
       this.setState({
         locked: false,
         selectedCards: {}
       })
+    }
+
+    checkGame = () => {
+      const {
+        matchedCards,
+        cards
+      } = this.state
+
+      const matchedCardsLength = R.pipe(
+        R.keys,
+        R.length
+      )
+
+      const cardsLength = R.pipe(
+        R.length,
+        R.divide(R.__, 2)
+      )
+
+      if (cardsLength(cards) === matchedCardsLength(matchedCards)) {
+        this.initializeGame()
+      } else {
+        this.unlockNextMove()
+      }
     }
 
     checkSelectedCards = () => {
@@ -69,8 +99,6 @@ class MemoryGamePage extends Component {
           }
         }))
       }
-
-      this.resetBoard()
     }
 
     tryLockingBoard = () => {
@@ -81,7 +109,10 @@ class MemoryGamePage extends Component {
       const locked = isLocked(selectedCards)
 
       if (locked) {
-        setTimeout(this.checkSelectedCards, TIME_BEFORE_HIDDING_CARDS)
+        setTimeout(() => {
+          this.checkSelectedCards()
+          this.checkGame()
+        }, TIME_BEFORE_HIDDING_CARDS)
       }
 
       this.setState({
@@ -132,7 +163,7 @@ class MemoryGamePage extends Component {
           </div>
           <div className='row'>
             <div className='col'>
-              <Board
+              <MemoryGame
                 cards={cards}
                 selectedCards={selectedCards}
                 matchedCards={matchedCards}

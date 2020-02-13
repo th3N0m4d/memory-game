@@ -2,8 +2,11 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import MemoryGamePage from '@/components/MemoryGamePage'
-import Board from '@/components/Board'
+import MemoryGame from '@/components/MemoryGame'
 import { generateCards } from '@/utilities'
+import {
+  TIME_BEFORE_HIDDING_CARDS
+} from '@/consts'
 
 describe('MemoryGamePage', () => {
   it('should render', () => {
@@ -27,7 +30,7 @@ describe('MemoryGamePage', () => {
       <MemoryGamePage />
     )
 
-    const boardProps = wrapper.find(Board).props()
+    const boardProps = wrapper.find(MemoryGame).props()
 
     expect(boardProps.rows).toEqual(expectedProps.rows)
     expect(boardProps.cols).toEqual(expectedProps.cols)
@@ -41,13 +44,11 @@ describe('MemoryGamePage', () => {
       <MemoryGamePage />
     )
 
-    const board = wrapper.find(Board)
-    const onCardSelectedFn = board.prop('onCardSelected')
+    const board = wrapper.find(MemoryGame)
 
-    onCardSelectedFn({ id: 0, position: 0 })
-    onCardSelectedFn({ id: 1, position: 1 })
+    flipCards(board)
 
-    const isLocked = wrapper.find(Board).prop('locked')
+    const isLocked = wrapper.find(MemoryGame).prop('locked')
 
     expect(isLocked).toBeTruthy()
   })
@@ -57,14 +58,46 @@ describe('MemoryGamePage', () => {
       <MemoryGamePage />
     )
 
-    const board = wrapper.find(Board)
+    const board = wrapper.find(MemoryGame)
     const onCardSelectedFn = board.prop('onCardSelected')
 
     onCardSelectedFn({ 0: 1 })
     onCardSelectedFn({ 0: 1 })
 
-    const isLocked = wrapper.find(Board).prop('locked')
+    const isLocked = wrapper.find(MemoryGame).prop('locked')
 
     expect(isLocked).toBeFalsy()
   })
+
+  it('should reset properties of MemoryGame component when game is finished', (done) => {
+    const mockDifficultyLevel = {
+      rows: 1,
+      cols: 2,
+      label: 'Foo'
+    }
+    const wrapper = shallow(
+      <MemoryGamePage difficulty={mockDifficultyLevel} />
+    )
+
+    const board = wrapper.find(MemoryGame)
+
+    flipCards(board)
+
+    setTimeout(() => {
+      const boardProps = wrapper.find(MemoryGame).props()
+
+      expect(boardProps.locked).toBeFalsy()
+      expect(boardProps.matchedCards).toEqual({})
+      expect(boardProps.selectedCards).toEqual({})
+      done()
+    }, TIME_BEFORE_HIDDING_CARDS)
+  })
+
+  const flipCards = board => {
+    const [firstCard, secondCard] = board.prop('cards')
+    const onCardSelectedFn = board.prop('onCardSelected')
+
+    onCardSelectedFn(firstCard)
+    onCardSelectedFn(secondCard)
+  }
 })
