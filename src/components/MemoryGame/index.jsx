@@ -10,6 +10,7 @@ const propTypes = {
   cards: PropTypes.arrayOf(PropTypes.object),
   cols: PropTypes.number,
   locked: PropTypes.bool,
+  matchedCards: PropTypes.object,
   onCardSelected: PropTypes.func,
   rows: PropTypes.number,
   selectedCards: PropTypes.object
