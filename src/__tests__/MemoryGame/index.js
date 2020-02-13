@@ -2,12 +2,12 @@ import React from 'react'
 import { shallow } from 'enzyme'
 import * as R from 'ramda'
 
-import Board from '@/components/Board'
+import MemoryGame from '@/components/MemoryGame'
 import Card from '@/components/Card'
 import { generateCards } from '@/utilities'
-import { GridContainer } from '@/components/Board/Atoms'
+import { GridContainer } from '@/components/MemoryGame/Atoms'
 
-describe('Board', () => {
+describe('MemoryGame', () => {
   const NUMBER_OF_CARDS = 12
   const defaultParams = {
     rows: 3,
@@ -16,7 +16,7 @@ describe('Board', () => {
   }
   it('should render', () => {
     const wrapper = shallow(
-      <Board />
+      <MemoryGame />
     )
 
     expect(wrapper.exists()).toBeTruthy()
@@ -25,7 +25,7 @@ describe('Board', () => {
   it('should parameterize GridContainer with rows', () => {
     const rows = 7
     const wrapper = shallow(
-      <Board rows={rows} />
+      <MemoryGame rows={rows} />
     )
 
     const gridContainer = wrapper.find(GridContainer)
@@ -36,7 +36,7 @@ describe('Board', () => {
   it('should parameterize GridContainer with cols', () => {
     const cols = 7
     const wrapper = shallow(
-      <Board cols={cols} />
+      <MemoryGame cols={cols} />
     )
 
     const gridContainer = wrapper.find(GridContainer)
@@ -46,7 +46,7 @@ describe('Board', () => {
 
   it('should render GridContainer with 12 cards', () => {
     const wrapper = shallow(
-      <Board {...defaultParams} />
+      <MemoryGame {...defaultParams} />
     )
 
     const cardsRendered = R.length(wrapper.find(Card))
@@ -60,7 +60,7 @@ describe('Board', () => {
       expectedParams
     ] = defaultParams.cards
     const wrapper = shallow(
-      <Board {...defaultParams} onCardSelected={onCardSelectedSpy} />
+      <MemoryGame {...defaultParams} onCardSelected={onCardSelectedSpy} />
     )
 
     const firstCard = wrapper.find(Card).first()
@@ -73,7 +73,7 @@ describe('Board', () => {
   it('should not trigger onCardSelected when board is locked', () => {
     const onCardSelectedSpy = jest.fn()
     const wrapper = shallow(
-      <Board
+      <MemoryGame
         {...defaultParams}
         onCardSelected={onCardSelectedSpy}
         locked

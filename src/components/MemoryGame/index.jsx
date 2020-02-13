@@ -10,6 +10,7 @@ const propTypes = {
   cards: PropTypes.arrayOf(PropTypes.object),
   cols: PropTypes.number,
   locked: PropTypes.bool,
+  matchedCards: PropTypes.object,
   onCardSelected: PropTypes.func,
   rows: PropTypes.number,
   selectedCards: PropTypes.object
@@ -19,12 +20,12 @@ const defaultProps = {
   cards: [],
   cols: 0,
   locked: false,
-  matchedCards: [],
+  matchedCards: {},
   rows: 0,
   selectedCards: {}
 }
 
-const Board = ({
+const MemoryGame = ({
   cards,
   cols,
   locked,
@@ -52,7 +53,7 @@ const Board = ({
   </GridContainer>
 )
 
-Board.propTypes = propTypes
-Board.defaultProps = defaultProps
+MemoryGame.propTypes = propTypes
+MemoryGame.defaultProps = defaultProps
 
-export default Board
+export default MemoryGame
