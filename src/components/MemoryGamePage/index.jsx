@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import * as R from 'ramda'
 
-import Board from '@/components/Board'
+import MemoryGame from '@/components/MemoryGame'
 import {
   difficultyLevel,
   TIME_BEFORE_HIDDING_CARDS
@@ -132,7 +132,7 @@ class MemoryGamePage extends Component {
           </div>
           <div className='row'>
             <div className='col'>
-              <Board
+              <MemoryGame
                 cards={cards}
                 selectedCards={selectedCards}
                 matchedCards={matchedCards}

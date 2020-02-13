@@ -2,7 +2,7 @@ import React from 'react'
 import { shallow } from 'enzyme'
 
 import MemoryGamePage from '@/components/MemoryGamePage'
-import Board from '@/components/Board'
+import MemoryGame from '@/components/MemoryGame'
 import { generateCards } from '@/utilities'
 
 describe('MemoryGamePage', () => {
@@ -27,7 +27,7 @@ describe('MemoryGamePage', () => {
       <MemoryGamePage />
     )
 
-    const boardProps = wrapper.find(Board).props()
+    const boardProps = wrapper.find(MemoryGame).props()
 
     expect(boardProps.rows).toEqual(expectedProps.rows)
     expect(boardProps.cols).toEqual(expectedProps.cols)
@@ -41,13 +41,13 @@ describe('MemoryGamePage', () => {
       <MemoryGamePage />
     )
 
-    const board = wrapper.find(Board)
+    const board = wrapper.find(MemoryGame)
     const onCardSelectedFn = board.prop('onCardSelected')
 
     onCardSelectedFn({ id: 0, position: 0 })
     onCardSelectedFn({ id: 1, position: 1 })
 
-    const isLocked = wrapper.find(Board).prop('locked')
+    const isLocked = wrapper.find(MemoryGame).prop('locked')
 
     expect(isLocked).toBeTruthy()
   })
@@ -57,13 +57,13 @@ describe('MemoryGamePage', () => {
       <MemoryGamePage />
     )
 
-    const board = wrapper.find(Board)
+    const board = wrapper.find(MemoryGame)
     const onCardSelectedFn = board.prop('onCardSelected')
 
     onCardSelectedFn({ 0: 1 })
     onCardSelectedFn({ 0: 1 })
 
-    const isLocked = wrapper.find(Board).prop('locked')
+    const isLocked = wrapper.find(MemoryGame).prop('locked')
 
     expect(isLocked).toBeFalsy()
   })

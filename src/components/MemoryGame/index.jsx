@@ -24,7 +24,7 @@ const defaultProps = {
   selectedCards: {}
 }
 
-const Board = ({
+const MemoryGame = ({
   cards,
   cols,
   locked,
@@ -52,7 +52,7 @@ const Board = ({
   </GridContainer>
 )
 
-Board.propTypes = propTypes
-Board.defaultProps = defaultProps
+MemoryGame.propTypes = propTypes
+MemoryGame.defaultProps = defaultProps
 
-export default Board
+export default MemoryGame

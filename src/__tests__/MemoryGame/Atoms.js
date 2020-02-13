@@ -1,6 +1,6 @@
 import React from 'react'
 import { shallow } from 'enzyme'
-import { GridContainer } from '@/components/Board/Atoms'
+import { GridContainer } from '@/components/MemoryGame/Atoms'
 
 describe('Board Atoms', () => {
   it('should render', () => {
