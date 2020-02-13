@@ -20,7 +20,7 @@ const defaultProps = {
   cards: [],
   cols: 0,
   locked: false,
-  matchedCards: [],
+  matchedCards: {},
   rows: 0,
   selectedCards: {}
 }
